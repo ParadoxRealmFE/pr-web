@@ -15,21 +15,24 @@ const Section = styled.section`
 
 const CharacterContainer = styled.div`
   display: flex;
+  max-width: 1000px;
+  max-height: 1000px;
+  justify-content: 
   flex-wrap: wrap;
 `
 
 const Card = styled.div`
-  width: 300px;
-  height: 300px;
+  width: 200px;
+  height: 200px;
 `
 
 const Characters = () => {
   return (
     <Section>
       <CharacterContainer>
-        {/* {[0,1,2,3,4,5,6,7,8,9,10,11].map((item) => ( */}
+        {[0,1,2,3,4,5].map((item) => (
           <CharacterCard />
-        // ))} 
+        ))} 
       </CharacterContainer>
     </Section>
   )

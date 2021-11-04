@@ -149,7 +149,7 @@ const Curtain = ({left, image}) => {
   },[left])
 
   return (
-    <CurtainWrapper left={left}
+    <CurtainWrapper
       animate={{ x: direction }}
       transition={{ type: "spring", stiffness: 100, delay: 2, default: { duration: 2 }, }} 
       >

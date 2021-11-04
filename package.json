@@ -1,11 +1,6 @@
 {
   "name": "paradox",
   "private": true,
-  "babel": {
-    "plugins": [
-      "babel-plugin-styled-components"
-    ]
-  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",

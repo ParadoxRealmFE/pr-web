@@ -19,7 +19,7 @@ const ImageContainer = styled.div`
 
 const TeamContainer = styled.div`
   position: absolute;
-  top: 50%;
+  top: 25%;
   // left: 50%;
   // right: 50%;
   bottom: 50%;
@@ -28,6 +28,7 @@ const TeamContainer = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
+  height: 800px;
 `
 
 const TitleWrapper = styled.div`

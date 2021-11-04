@@ -18,11 +18,11 @@ export default function Home() {
       </Head>
       <main>
         <Theatre />
-        {/* <Worlds />
+        <Worlds />
         <Paradox />
         <Roadmap />
         <Characters />
-        <Team /> */}
+        <Team />
       </main>
     </div>
   )
