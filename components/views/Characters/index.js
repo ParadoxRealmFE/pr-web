@@ -31,7 +31,7 @@ const Characters = () => {
     <Section>
       <CharacterContainer>
         {[0,1,2,3,4,5].map((item) => (
-          <CharacterCard />
+          <CharacterCard key={item}/>
         ))} 
       </CharacterContainer>
     </Section>

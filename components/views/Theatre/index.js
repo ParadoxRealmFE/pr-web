@@ -135,7 +135,7 @@ const Theatre = () => {
         <VideoWrapper>
           <video
           ref={videoRef}
-          controls src={require('../../../public/movie.mp4')} controls />
+          controls src={require('../../../public/movie.mp4')} />
         </VideoWrapper> 
 
       </CurtainContainer> 
