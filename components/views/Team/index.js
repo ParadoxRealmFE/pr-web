@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components'
 import Image from 'next/image'
-import Teampage from '../../public/teampage.png'
+import Teampage from '../../../public/teampage.png'
 
 const Section = styled.section`
   height: 100vh;

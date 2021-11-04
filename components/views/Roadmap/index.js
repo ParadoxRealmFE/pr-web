@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
-import man from '../../public/man.png'
-import film from '../../public/film.png'
+import man from '../../../public/man.png'
+import film from '../../../public/film.png'
 
 const Section = styled.section`
   position: relative;

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components'
 import Image from 'next/image'
 // import {Character} from './Character'
-import Character from '../../public/character.png'
+import Character from '../../../public/character.png'
 
 const Section = styled.section`
   height: 100vh;

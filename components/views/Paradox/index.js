@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components'
 import Image from 'next/image'
-import City from '../../public/city.png'
-import PulsingButton from '../../components/PulsingButton'
+import City from '../../../public/city.png'
+import PulsingButton from '../../PulsingButton'
 
 const Section = styled.section`
   height: 100vh;

@@ -1,11 +1,11 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import Theatre from '../views/Theatre'
-import Worlds from '../views/Worlds'
-import Paradox from '../views/Paradox'
-import Characters from '../views/Characters'
-import Team from '../views/Team'
-import Roadmap from '../views/Roadmap'
+import Theatre from '../components/views/Theatre'
+import Worlds from '../components/views/Worlds'
+import Paradox from '../components/views/Paradox'
+import Characters from '../components/views/Characters'
+import Team from '../components/views/Team'
+import Roadmap from '../components/views/Roadmap'
 
 
 export default function Home() {
@@ -18,11 +18,11 @@ export default function Home() {
       </Head>
       <main>
         <Theatre />
-        <Worlds />
+        {/* <Worlds />
         <Paradox />
         <Roadmap />
         <Characters />
-        <Team />
+        <Team /> */}
       </main>
     </div>
   )

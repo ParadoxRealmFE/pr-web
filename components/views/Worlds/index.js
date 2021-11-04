@@ -2,8 +2,8 @@ import React from 'react'
 import styled from 'styled-components';
 import Image from 'next/image'
 
-import Hand from '../../public/hand.png'
-import PulsingButton from '../../components/PulsingButton'
+import Hand from '../../../public/hand.png'
+import PulsingButton from '../../../components/PulsingButton'
 
 
 const Section = styled.section`
