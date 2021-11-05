@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, {keyframes} from 'styled-components';
+import Dialog from '../Dialog'
 
 const pulseDot = keyframes`
   0% {
@@ -63,19 +64,25 @@ const PulseContainer = styled.div`
 
 `
 
-const Button = styled.button``
-
-const PulsingButton = ({left, top, size = "30px" , color, fn = () => {}}) => {
+const PulsingButton = ({left, top, size = "30px" , color, text = "Coming Soon."}) => {
+  const [open, setOpen] = React.useState(false)
 
   const pulseColor = React.useMemo(() => {
     let types = {red:"#FA7E57", yellow:"#F5E04A", green: "#A0F054"}
     return types[color]
   },[color])
 
+  const handleOpen = () => {
+    console.log("fired")
+    setOpen(!open)
+  }
+
   return (
-    <PulseContainer left={left} top={top} size={size} pulseColor={pulseColor} onClick={fn}>
-      {/* <Button onClick={fn}></Button> */}
-    </PulseContainer>
+    <>
+      <PulseContainer left={left} top={top} size={size} pulseColor={pulseColor} onClick={handleOpen}>
+      </PulseContainer>
+      <Dialog open={open} text={text} fn={handleOpen}/>
+    </>
   )
 }
 

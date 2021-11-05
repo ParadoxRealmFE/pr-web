@@ -3,10 +3,11 @@ import styled from 'styled-components'
 import Image from 'next/image'
 // import {Character} from './Character'
 import Character from '../../../public/character.png'
+import {Grid} from '@mui/material'
 
 const Section = styled.section`
   position: relative;
-  height: ${props => `${props.height}px`};
+  height: $100%;
   width: ${props => `${props.width}px`};
   background-color: #000;
   display: flex;
@@ -22,9 +23,13 @@ const CharacterContainer = styled.div`
 `
 
 const Card = styled.div`
-  width: 250px;
-  height: 250px;
+  width: 100%;
+  max-width: 250px;
+  max-height: 250px;
+  min-width: 100px;
+  min-height: 100px;
   padding: 1rem;
+  position: relative;
 `
 
 const Characters = ({width, height}) => {

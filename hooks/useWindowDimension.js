@@ -1,21 +1,35 @@
+import React from 'react'
 
-import React, { useLayoutEffect, useState } from 'react';
 
-export default function useWindowSize() {
-  const [size, setSize] = useState({
-    width: 0,
-    height: 0
+export default function useWindowDimension() {
+  // Initialize state with undefined width/height so server and client renders match
+  // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
+  const [windowSize, setWindowSize] = React.useState({
+    width: undefined,
+    height: undefined,
   });
-  useLayoutEffect(() => {
-    function updateSize() {
-      setSize({
-        width: window.innerWidth,
-        height: window.innerHeight
-      });
+
+  React.useEffect(() => {
+    // only execute all the code below in client side
+    if (typeof window !== 'undefined') {
+      // Handler to call on window resize
+      function handleResize() {
+        // Set window width/height to state
+        setWindowSize({
+          width: window.innerWidth,
+          height: window.innerHeight,
+        });
+      }
+    
+      // Add event listener
+      window.addEventListener("resize", handleResize);
+     
+      // Call handler right away so state gets updated with initial window size
+      handleResize();
+    
+      // Remove event listener on cleanup
+      return () => window.removeEventListener("resize", handleResize);
     }
-    window.addEventListener('resize', updateSize);
-    updateSize();
-    return () => window.removeEventListener('resize', updateSize);
-  }, []);
-  return size;
+  }, []); // Empty array ensures that effect is only run on mount
+  return windowSize;
 }

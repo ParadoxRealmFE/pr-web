@@ -7,18 +7,19 @@ import PulsingButton from '../../../components/PulsingButton'
 
 
 const Section = styled.section`
-  position: relative;
-  z-index: -1;
-  height: ${props => `${props.height}px`};
+  height: 100%;
   width: ${props => `${props.width}px`};
   background-color: #000;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  z-index: 1;
 `
 const HandContainer = styled.div`
   position: relative;
   width: 500px;
+  padding: 4rem;
 `
 
 const Worlds = ({height, width}) => {

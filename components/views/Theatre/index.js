@@ -14,10 +14,15 @@ import ReactPlayer from 'react-player';
 const Section = styled.section`
   display: flex;
   flex-direction: column;
-  height: ${props => `${props.height}px`};
+  min-height: ${props => `${props.height + 120}px`};
+  height: 100%;
   width: ${props => `${props.width}px`};
   max-width: ${props => `${props.width}px`};
   overflow: hidden;
+  position: relative;
+  z-index: 1;
+  background-color: #000;
+
 `
 
 const Header = styled.header`
@@ -45,7 +50,7 @@ const CurtainContainer = styled.div`
   top: 140px;
   left: 0;
   display: flex;
-  height: ${props => `${props.height}px`};
+  height: 100%;
   width: ${props => `${props.width}px`};
   overflow: hidden;
 `
@@ -78,7 +83,7 @@ const TicketWrapper = styled.div`
   height: 65px;
 `
 
-const TicketText = styled.input`
+const TicketText = styled.p`
   postion: relative;
   z-index: 2;
   font-weight: bold;
@@ -100,7 +105,8 @@ const VideoWrapper = styled.div`
   left:0;
   width: 100%;
   height: 100%;
-  z-index: ${props => props.videoPosition};
+  min-height: 800px;
+  // z-index: ${props => props.videoPosition};
 `
 // height: calc(${props => `${props.height}px`} - 180px);
 
@@ -122,19 +128,13 @@ const Theatre = ({height, width}) => {
     <Section height={videoRef.current?.offsetHeight || height} width={width}>
       <Header>
         <TopCurtainContainer>
-          { width > 1100 && (
           <TicketsContainer>
             {[
-              {text: "Game", link: "document.getElementById('paradox').scrollIntoView();"},
-              {text: "Characters", link: ""},
-              {text: "Tokenomics", link: ""},
-              {text: "Roadmap", link: ""},
-              {text: "The Team", link: ""},
+              {text: "Mint", link: ""},
             ].map(({text, link}, i) => (
               <Ticket text={text} link={link} key={i} />
             ))}
             </TicketsContainer>
-          )}
           <TopCurtain>
             <Image src={topcurtain} layout="fill" />
           </TopCurtain>

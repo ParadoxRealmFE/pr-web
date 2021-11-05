@@ -8,6 +8,8 @@ import Team from '../components/views/Team'
 import Roadmap from '../components/views/Roadmap'
 import useWindowDimensions from '../hooks/useWindowDimension'
 import styled from 'styled-components'
+import Social from '../components/views/Social'
+
 
 const Main = styled.main`
 
@@ -25,11 +27,12 @@ export default function Home() {
       </Head>
       <Main>
         <Theatre height={height} width={width}/>
-        <Worlds height={height} width={width}/>
+        {/* <Worlds height={height} width={width}/> */}
         <Paradox height={height} width={width}/>
         <Roadmap height={height} width={width}/>
-        {/* <Characters height={height} width={width}/> */}
+        <Characters height={height} width={width}/>
         <Team height={height} width={width}/>
+        <Social />
       </Main>
     </div>
   )
