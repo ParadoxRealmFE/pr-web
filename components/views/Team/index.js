@@ -80,7 +80,7 @@ const Team = ({height, width}) => {
   return (
     <Section height={height} width={width}>
       <ImageContainer>
-        <Image src={Teampage} alt="team" layout="fill"/>
+        <Image src={Teampage} alt="team" layout="fill" priority/>
         <TeamContainer>
           <Title text="Team" />
           <TeamWrapper>

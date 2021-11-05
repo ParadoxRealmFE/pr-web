@@ -53,14 +53,14 @@ const Social = ({width}) => {
 					},
 					{
 						icon: whitepaper,
-						link: ""
+						link: "https://drive.google.com/file/d/1q3GLA9pYZXpfs563fjDqunvpMSu0pv_7/view?usp=sharing"
 					},
 					{
 						icon: youtube,
 						link: "https://www.youtube.com/c/OntheFlywithSly"
 					},
-				].map(({icon, link}) => (
-					<IconButton href={link}>
+				].map(({icon, link}, i) => (
+					<IconButton href={link} key={i}>
 						<Image src={icon} alt="social" />
 					</IconButton>
 				))}
