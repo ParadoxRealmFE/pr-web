@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components'
 import Image from 'next/image'
 import Teampage from '../../../public/teampage.jpg'
+import { Typography } from '@mui/material'
 
 const Section = styled.section`
 height: ${props => `${props.height}px`};
@@ -24,12 +25,14 @@ const TeamContainer = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 800px;
-  padding-top: 2rem;
+  height: ${props => `${props.height - 200}px`};
+  margin: 2rem 0;
+  padding: 2rem;
+  // padding-bottom: 4rem;
 `
 
 const TitleWrapper = styled.div`
-  padding: 2rem 0;
+  padding: 1rem 0;
 `
 
 const TitleText = styled.h2`
@@ -81,7 +84,7 @@ const Team = ({height, width}) => {
     <Section height={height} width={width}>
       <ImageContainer>
         <Image src={Teampage} alt="team" layout="fill" priority/>
-        <TeamContainer>
+        <TeamContainer height={height}>
           <Title text="Team" />
           <TeamWrapper>
             {teamData.map(({member, position}, i) => 
@@ -112,9 +115,9 @@ const TeamMember = ({member, position}) => {
   return (
     <TeamMemberWrapper>
       { position ?(
-        <TeamMemberText>{`${member} --------------------- ${position}`}</TeamMemberText>
+        <Typography>{`${member} --------------------- ${position}`}</Typography>
       ) : (
-        <TeamMemberText>{member}</TeamMemberText>
+        <Typography>{member}</Typography>
       )}
     </TeamMemberWrapper>
   )

@@ -14,8 +14,8 @@ import ReactPlayer from 'react-player';
 const Section = styled.section`
   display: flex;
   flex-direction: column;
-  min-height: ${props => `${props.height + 160}px`};
-  height: 100%;
+  min-height: ${props => `${props.height}px`};
+  height: ${props => `${props.height}px`};
   width: ${props => `${props.width}px`};
   max-width: ${props => `${props.width}px`};
   overflow: hidden;
@@ -51,6 +51,7 @@ const CurtainContainer = styled.div`
   left: 0;
   display: flex;
   height: 100%;
+  min-height:${props => `${props.height}px`};
   width: ${props => `${props.width}px`};
   overflow: hidden;
 `
@@ -105,7 +106,7 @@ const VideoWrapper = styled.div`
   left:0;
   width: 100%;
   height: 100%;
-  min-height: 800px;
+  min-height: ${props => `${props.height}px`};
   // z-index: ${props => props.videoPosition};
 `
 // height: calc(${props => `${props.height}px`} - 180px);
@@ -113,7 +114,14 @@ const VideoWrapper = styled.div`
 const Theatre = ({height, width}) => {
   const [videoPosition, setVideoPosition] = React.useState(-1)
   const videoRef = React.useRef()
-  console.log(videoRef)
+  const videoWrapperRef = React.useRef()
+  const curtainRef = React.useRef()
+
+  console.log(height)
+  // console.log(curtainRef.current?.clientHeight)
+  // console.log(videoRef.current?.offsetHeight)
+  // console.log(videoWrapperRef.current?.clientHeight)
+
   React.useEffect(() => {
     const playVideo =  setTimeout(()=>{
       if(videoRef.current !== undefined) {
@@ -128,12 +136,15 @@ const Theatre = ({height, width}) => {
      playVideo()
    } catch(err) {
     console.log(err)
-    setVideoPosition(10000)
+    setTimeout(()=>{
+      setVideoPosition(10000)
+      
+    },5000)
    }
     
   }, []);
   return (
-    <Section height={videoRef.current?.offsetHeight || height} width={width}>
+    <Section height={height} width={width}>
       <Header>
         <TopCurtainContainer>
           <TicketsContainer>
@@ -148,19 +159,20 @@ const Theatre = ({height, width}) => {
           </TopCurtain>
         </TopCurtainContainer>
       </Header>
-      <CurtainContainer height={height} width={width}>
+      <CurtainContainer ref={curtainRef} height={videoRef.current?.offsetHeight} width={width}>
         <Curtain left image={leftcurtain} layout="responsive"/>
         <Curtain image={rightcurtain} layout="responsive"/>
-        <VideoWrapper 
-        height={videoRef.current?.offsetHeight}
-        videoPosition={videoPosition}
-        >
+        {/* <VideoWrapper 
+          ref={videoWrapperRef}
+          height={videoRef.current?.offsetHeight}
+          videoPosition={videoPosition}
+        > */}
           <video
           style={{position: "absolute", top: 0, left: 0}}
           width={width}
           ref={videoRef}
           controls src={require('../../../public/movie.mp4')} />
-        </VideoWrapper> 
+        {/* </VideoWrapper>  */}
       </CurtainContainer> 
     </Section>
   )

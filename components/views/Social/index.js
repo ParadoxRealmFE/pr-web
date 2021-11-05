@@ -10,7 +10,7 @@ import Link from '@mui/material/Link';
 import Image from 'next/image'
 
 const Section = styled.section`
-    width: ${props => props.width}
+	width: ${props => `${props.width}px`};
     height: 80px;
 	background-color: #000;
 `

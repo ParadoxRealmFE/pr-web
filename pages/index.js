@@ -32,7 +32,7 @@ export default function Home() {
         <Roadmap height={height} width={width}/>
         <Characters height={height} width={width}/>
         <Team height={height} width={width}/>
-        <Social />
+        <Social height={height} width={width}/>
       </Main>
     </div>
   )

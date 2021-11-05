@@ -7,7 +7,9 @@ import roadmap from '../../../public/roadmap.jpg'
 
 const Section = styled.section`
   position: relative;
-  height: ${props => `${props.height}px`};
+  height: 100%;
+  min-height: ${props => `${props.height}px`};
+  padding: 2rem;
   width: ${props => `${props.width}px`};
   display: flex;
   justify-content: center;
@@ -23,11 +25,9 @@ const FilmStrip = styled.div`
 `
 
 const CharWrapper = styled.div`
-  // position: absolute;
-  // bottom: 125px;
-  // right: 0;
-  // height: 400px;
-  // width: 400px;
+  width: 100%;
+  height: 100%;
+  position: relative;
 
 `
 
@@ -73,14 +73,16 @@ const roadmapData = {
 
 
 const Roadmap = ({width, height}) => {
+  const image = React.useRef()
+
   return (
-    <Section width={width} height={height}>
+    <Section width={width} height={image.current?.clientHeight || 1000}>
       {/* <FilmWrapper>
         <FilmStipComp />
         <FilmStipComp />
       </FilmWrapper> */}
-      <CharWrapper>
-        <Image src={roadmap} alt="character" layout="fill"/>
+      <CharWrapper ref={image}>
+        <Image  src={roadmap} alt="character" layout="responsive"/>
       </CharWrapper>
     </Section>
   )

@@ -5,11 +5,16 @@ import City from '../../../public/city2.jpg'
 import PulsingButton from '../../PulsingButton'
 
 const Section = styled.section`
-  height: ${props => `${props.height}px`};
+  height: 100%;
+  min-height: width: ${props => `${props.height}px`};
   width: ${props => `${props.width}px`};
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  z-index: 1;
+  padding: 2rem;
+  background: #000;
 `
 
 const ImageContainer = styled.div`
@@ -33,14 +38,15 @@ const data = [
 ]
 
 const Paradox = ({width, height}) => {
+  const image = React.useRef()
   return (
-    <Section width={width} height={height} id="paradox">
-      <ImageContainer>
-        <PulsingButton left="45.5%" top="115px" size="30px" color="green" text={data[0]}/>
-        <PulsingButton left="27%" top="240px" size="30px" color="red"/>
+    <Section width={width} height={image.current?.clientHeight || 1000} id="paradox">
+      <ImageContainer ref={image}>
+        <PulsingButton left="45.5%" top="10%" size="30px" color="green" text={data[0]}/>
+        <PulsingButton left="27%" top="20%" size="30px" color="red"/>
         <PulsingButton left="80%" top="50%" size="30px" color="red"/>
         <PulsingButton left="15%" top="67.5%" size="30px" color="red"/>
-        <Image src={City} alt="city" layout="fill" priority/>
+        <Image src={City} alt="city" layout="responsive" priority/>
       </ImageContainer>
     </Section>
   )
