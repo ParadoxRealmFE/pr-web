@@ -5,32 +5,34 @@ import Image from 'next/image'
 import Character from '../../../public/character.png'
 
 const Section = styled.section`
-  height: 100vh;
-  width: 100%;
+  position: relative;
+  height: ${props => `${props.height}px`};
+  width: ${props => `${props.width}px`};
   background-color: #000;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 2rem;
 `
 
 const CharacterContainer = styled.div`
   display: flex;
-  max-width: 1000px;
-  max-height: 1000px;
-  justify-content: 
   flex-wrap: wrap;
+  justify-content: center;
 `
 
 const Card = styled.div`
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
+  padding: 1rem;
 `
 
-const Characters = () => {
+const Characters = ({width, height}) => {
+  console.log(width, height)
   return (
-    <Section>
-      <CharacterContainer>
-        {[0,1,2,3,4,5].map((item) => (
+    <Section width={width} height={height}>
+      <CharacterContainer width={width} height={height}>
+        {[0,1,2,3,4,5,6,7,8,9,10,11].map((item) => (
           <CharacterCard key={item}/>
         ))} 
       </CharacterContainer>
@@ -41,7 +43,7 @@ const Characters = () => {
 const CharacterCard = () => {
   return (
     <Card>
-       <Image src={Character} />
+       <Image src={Character} layout="responsive"/>
     </Card>
   )
 }

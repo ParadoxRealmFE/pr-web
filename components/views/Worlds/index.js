@@ -8,9 +8,9 @@ import PulsingButton from '../../../components/PulsingButton'
 
 const Section = styled.section`
   position: relative;
-  zIndex: -1;
-  height: 100vh;
-  width: 100%;
+  z-index: -1;
+  height: ${props => `${props.height}px`};
+  width: ${props => `${props.width}px`};
   background-color: #000;
   display: flex;
   justify-content: center;
@@ -21,10 +21,9 @@ const HandContainer = styled.div`
   width: 500px;
 `
 
-const Worlds = () => {
+const Worlds = ({height, width}) => {
   return (
-    <Section>
-      
+    <Section height={height} width={width}>
       <HandContainer>
       <PulsingButton top="115px" left="80%" size="50px" color="yellow"/>
         <Image src={Hand} alt="game hand" layout="responsive"/>

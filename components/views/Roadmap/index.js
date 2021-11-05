@@ -3,11 +3,12 @@ import styled from 'styled-components'
 import Image from 'next/image'
 import man from '../../../public/man.png'
 import film from '../../../public/film.png'
+import roadmap from '../../../public/roadmap.jpg'
 
 const Section = styled.section`
   position: relative;
-  height: 100vh;
-  width: 100%;
+  height: ${props => `${props.height}px`};
+  width: ${props => `${props.width}px`};
   display: flex;
   justify-content: center;
 `
@@ -22,11 +23,12 @@ const FilmStrip = styled.div`
 `
 
 const CharWrapper = styled.div`
-  position: absolute;
-  bottom: 125px;
-  right: 0;
-  height: 400px;
-  width: 400px;
+  // position: absolute;
+  // bottom: 125px;
+  // right: 0;
+  // height: 400px;
+  // width: 400px;
+
 `
 
 const roadmapData = {
@@ -70,15 +72,15 @@ const roadmapData = {
 }
 
 
-const Roadmap = () => {
+const Roadmap = ({width, height}) => {
   return (
-    <Section>
-      <FilmWrapper>
+    <Section width={width} height={height}>
+      {/* <FilmWrapper>
         <FilmStipComp />
         <FilmStipComp />
-      </FilmWrapper>
+      </FilmWrapper> */}
       <CharWrapper>
-        <Image src={man} alt="character"/>
+        <Image src={roadmap} alt="character" layout="fill"/>
       </CharWrapper>
     </Section>
   )

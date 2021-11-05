@@ -14,14 +14,17 @@ import ReactPlayer from 'react-player';
 const Section = styled.section`
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  width: 100%;
+  height: ${props => `${props.height}px`};
+  width: ${props => `${props.width}px`};
+  max-width: ${props => `${props.width}px`};
+  overflow: hidden;
 `
 
 const Header = styled.header`
   position: relative;
   width: 100%;
-  height: 200px;
+  height: 160px;
+  background-color: #000;
 `
 
 const TopCurtainContainer = styled.div`
@@ -39,19 +42,19 @@ const TopCurtain = styled.div`
 
 const CurtainContainer = styled.div`
   position: absolute;
-  top: 150px;
+  top: 140px;
   left: 0;
   display: flex;
-  height: 100%;
-  width: 100%;
+  height: ${props => `${props.height}px`};
+  width: ${props => `${props.width}px`};
+  overflow: hidden;
 `
 
 const CurtainWrapper = styled(motion.div)`
   width: 100%;
-  max-height: 100vh;
+  height: 100%;
   position:relative;
   z-index: 1001;
-  }}
 `
 
 const TicketsContainer = styled.div`
@@ -75,7 +78,7 @@ const TicketWrapper = styled.div`
   height: 65px;
 `
 
-const TicketText = styled.div`
+const TicketText = styled.input`
   postion: relative;
   z-index: 2;
   font-weight: bold;
@@ -97,47 +100,59 @@ const VideoWrapper = styled.div`
   left:0;
   width: 100%;
   height: 100%;
-  z-index: -1;
+  z-index: ${props => props.videoPosition};
 `
+// height: calc(${props => `${props.height}px`} - 180px);
 
-const Theatre = () => {
+const Theatre = ({height, width}) => {
+  const [videoPosition, setVideoPosition] = React.useState(-1)
   const videoRef = React.useRef()
-
+  console.log(videoRef)
   React.useEffect(() => {
-    setTimeout(()=>{
-      videoRef.current.play()
-    },2000)
+     setTimeout(()=>{
+       videoRef.current.play()
+       
+     },1000)
+     setTimeout(()=>{
+      setVideoPosition(10000)
+      
+    },5000)
   }, []);
   return (
-    <Section>
+    <Section height={videoRef.current?.offsetHeight || height} width={width}>
       <Header>
         <TopCurtainContainer>
+          { width > 1100 && (
           <TicketsContainer>
-          {[
-            {text: "Home", link: ""},
-            {text: "Game", link: ""},
-            {text: "Characters", link: ""},
-            {text: "Tokenomics", link: ""},
-            {text: "Roadmap", link: ""},
-            {text: "The Team", link: ""},
-          ].map(({text, link}, i) => (
-            <Ticket text={text} link={link} key={i} />
-          ))}
-          </TicketsContainer>
+            {[
+              {text: "Game", link: "document.getElementById('paradox').scrollIntoView();"},
+              {text: "Characters", link: ""},
+              {text: "Tokenomics", link: ""},
+              {text: "Roadmap", link: ""},
+              {text: "The Team", link: ""},
+            ].map(({text, link}, i) => (
+              <Ticket text={text} link={link} key={i} />
+            ))}
+            </TicketsContainer>
+          )}
           <TopCurtain>
-            <Image src={topcurtain} layout="responsive" />
+            <Image src={topcurtain} layout="fill" />
           </TopCurtain>
         </TopCurtainContainer>
       </Header>
-      <CurtainContainer>
-        <Curtain left image={leftcurtain}/>
-        <Curtain image={rightcurtain}/>
-        <VideoWrapper>
+      <CurtainContainer height={height} width={width}>
+        <Curtain left image={leftcurtain} layout="responsive"/>
+        <Curtain image={rightcurtain} layout="responsive"/>
+        <VideoWrapper 
+        height={videoRef.current?.offsetHeight}
+        videoPosition={videoPosition}
+        >
           <video
+          style={{position: "absolute", top: 0, left: 0}}
+          width={width}
           ref={videoRef}
           controls src={require('../../../public/movie.mp4')} />
         </VideoWrapper> 
-
       </CurtainContainer> 
     </Section>
   )
@@ -145,7 +160,7 @@ const Theatre = () => {
 
 const Curtain = ({left, image}) => {
   const direction = React.useMemo(() => {
-    return left ? "-85%" : "85%"
+    return left ? "-100%" : "100%"
   },[left])
 
   return (
@@ -161,7 +176,7 @@ const Curtain = ({left, image}) => {
 const Ticket = ({text, link}) => {
   return (
     <TicketWrapper>
-      <TicketText href={link}>{text}</TicketText>
+      <TicketText type button onClick={link}>{text}</TicketText>
       <TicketImageWrapper>
         <Image src={ticket} layout="responsive" />
       </TicketImageWrapper> 

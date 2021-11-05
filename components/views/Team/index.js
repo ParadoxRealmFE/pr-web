@@ -4,8 +4,8 @@ import Image from 'next/image'
 import Teampage from '../../../public/teampage.png'
 
 const Section = styled.section`
-  height: 100vh;
-  width: 100%;
+height: ${props => `${props.height}px`};
+width: ${props => `${props.width}px`};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,16 +19,13 @@ const ImageContainer = styled.div`
 
 const TeamContainer = styled.div`
   position: absolute;
-  top: 25%;
-  // left: 50%;
-  // right: 50%;
-  bottom: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
   height: 800px;
+  padding-top: 2rem;
 `
 
 const TitleWrapper = styled.div`
@@ -50,6 +47,11 @@ const TeamMemberWrapper = styled.div`
   display: flex;
   flex-direction: row;
   color: #fff;
+  padding: 0;
+`
+const TeamMemberText = styled.p`
+  padding: 2px;
+  margin: 0;
 `
 
 const teamData = [
@@ -74,9 +76,9 @@ const partnersColabs = [
   {member: "Christopher Rossetti"},
 ]
 
-const Team = () => {
+const Team = ({height, width}) => {
   return (
-    <Section>
+    <Section height={height} width={width}>
       <ImageContainer>
         <Image src={Teampage} alt="team" layout="fill"/>
         <TeamContainer>
@@ -110,9 +112,9 @@ const TeamMember = ({member, position}) => {
   return (
     <TeamMemberWrapper>
       { position ?(
-        <p>{`${member} --------------------- ${position}`}</p>
+        <TeamMemberText>{`${member} --------------------- ${position}`}</TeamMemberText>
       ) : (
-        <p>{member}</p>
+        <TeamMemberText>{member}</TeamMemberText>
       )}
     </TeamMemberWrapper>
   )
