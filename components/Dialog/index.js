@@ -8,7 +8,6 @@ const Text = styled.p`
 `
 
 const Title = styled.div`
-
     font-weight: bold;
 `
 
@@ -26,8 +25,8 @@ function SimpleDialog(props) {
     <Dialog onClose={fn} open={open}>
       {
         Array.isArray(text) ? (
-          text.map(({title, text}) => (
-            <TextWrapper>
+          text.map(({title, text}, i) => (
+            <TextWrapper key={i}>
               <Title>{title}</Title>
               <Text>{text}</Text>
             </TextWrapper>

@@ -106,7 +106,7 @@ const VideoWrapper = styled.div`
   width: 100%;
   height: 100%;
   min-height: 800px;
-  // z-index: ${props => props.videoPosition};
+  z-index: ${props => props.videoPosition};
 `
 // height: calc(${props => `${props.height}px`} - 180px);
 
@@ -115,14 +115,21 @@ const Theatre = ({height, width}) => {
   const videoRef = React.useRef()
   console.log(videoRef)
   React.useEffect(() => {
-     setTimeout(()=>{
-       videoRef.current.play()
-       
-     },1000)
-     setTimeout(()=>{
-      setVideoPosition(10000)
+    const playVideo =  setTimeout(()=>{
+      videoRef.current.play()
       
-    },5000)
+    },1000)
+    setTimeout(()=>{
+     setVideoPosition(10000)
+     
+   },5000)
+   try {
+     playVideo()
+   } catch(err) {
+    console.log(err)
+    setVideoPosition(10000)
+   }
+    
   }, []);
   return (
     <Section height={videoRef.current?.offsetHeight || height} width={width}>
