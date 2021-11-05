@@ -14,7 +14,7 @@ import ReactPlayer from 'react-player';
 const Section = styled.section`
   display: flex;
   flex-direction: column;
-  min-height: ${props => `${props.height + 120}px`};
+  min-height: ${props => `${props.height + 160}px`};
   height: 100%;
   width: ${props => `${props.width}px`};
   max-width: ${props => `${props.width}px`};
