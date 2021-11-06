@@ -6,7 +6,6 @@ import film from '../../../public/film.png'
 import roadmap from '../../../public/roadmap.jpg'
 
 const Section = styled.section`
-  position: relative;
   height: 100%;
   min-height: ${props => `${props.height}px`};
   padding: 2rem;

@@ -16,6 +16,7 @@ const ImageContainer = styled.div`
   width: 100%;
   height: 100%;
   position: relative;
+  height: ${props => `${props.height}px`};
 `
 
 const TeamContainer = styled.div`
@@ -24,15 +25,13 @@ const TeamContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  height: 100%;
   width: 100%;
-  height: ${props => `${props.height - 200}px`};
-  margin: 2rem 0;
-  padding: 2rem;
-  // padding-bottom: 4rem;
+
 `
 
 const TitleWrapper = styled.div`
-  padding: 1rem 0;
+  padding: 8px 0;
 `
 
 const TitleText = styled.h2`
@@ -80,11 +79,15 @@ const partnersColabs = [
 ]
 
 const Team = ({height, width}) => {
+  const teamRef = React.useRef()
+  console.log(teamRef.current?.clientHeight, "teamRef")
+
+
   return (
     <Section height={height} width={width}>
-      <ImageContainer>
+      <ImageContainer >
         <Image src={Teampage} alt="team" layout="fill" priority/>
-        <TeamContainer height={height}>
+        <TeamContainer ref={teamRef} height={height}>
           <Title text="Team" />
           <TeamWrapper>
             {teamData.map(({member, position}, i) => 

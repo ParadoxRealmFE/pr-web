@@ -11,6 +11,7 @@ import styled from 'styled-components'
 import Social from '../components/views/Social'
 
 
+
 const Main = styled.main`
 
 `
@@ -29,7 +30,7 @@ export default function Home() {
         <Theatre height={height} width={width}/>
         {/* <Worlds height={height} width={width}/> */}
         <Paradox height={height} width={width}/>
-        <Roadmap height={height} width={width}/>
+        {/* <Roadmap height={height} width={width}/> */}
         <Characters height={height} width={width}/>
         <Team height={height} width={width}/>
         <Social height={height} width={width}/>

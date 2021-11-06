@@ -7,59 +7,57 @@ import rightcurtain from '../../../public/rightcurtain.png'
 import ticket from '../../../public/ticket.png'
 import topcurtain from '../../../public/toppanel.png'
 import ReactPlayer from 'react-player';
+import { IconButton, Box } from "@mui/material"
 // import video from '../../../public/movie.mp4'
 
 
 
-const Section = styled.section`
+const Section = styled(Box)`
   display: flex;
   flex-direction: column;
-  min-height: ${props => `${props.height}px`};
-  height: ${props => `${props.height}px`};
   width: ${props => `${props.width}px`};
   max-width: ${props => `${props.width}px`};
   overflow: hidden;
-  position: relative;
-  z-index: 1;
   background-color: #000;
 
 `
 
 const Header = styled.header`
-  position: relative;
   width: 100%;
-  height: 160px;
+  height: 100%;
+  min-height: 80px;
+  max-height: 140px;
   background-color: #000;
+  position: relative;
 `
 
 const TopCurtainContainer = styled.div`
   width: 100%;
   height: 100%;
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
   z-index: 1002;
 `
-const TopCurtain = styled.div`
+const TopCurtain = styled(Box)`
   width: 100%;
   height: 100%;
-  positon: relative;
+  positon: absolute;
+  top:0;
+  left: 0;
   z-index: -122;
 `
 
 const CurtainContainer = styled.div`
-  position: absolute;
-  top: 140px;
-  left: 0;
+  position: relative;
   display: flex;
-  height: 100%;
-  min-height:${props => `${props.height}px`};
-  width: ${props => `${props.width}px`};
   overflow: hidden;
 `
 
 const CurtainWrapper = styled(motion.div)`
   width: 100%;
   height: 100%;
-  position:relative;
+  position: absolute;
   z-index: 1001;
 `
 
@@ -69,10 +67,7 @@ const TicketsContainer = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1100;
+  
 `
 
 const TicketWrapper = styled.div`
@@ -100,27 +95,37 @@ const TicketImageWrapper = styled.div`
 
 `
 
-const VideoWrapper = styled.div`
-  position: absolute;
-  top:0;
-  left:0;
-  width: 100%;
-  height: 100%;
-  min-height: ${props => `${props.height}px`};
-  // z-index: ${props => props.videoPosition};
+const VideoPadder = styled.div``
+
+const Video = styled.video`
+  position: relative;
+  z-index: 1;
 `
-// height: calc(${props => `${props.height}px`} - 180px);
+
 
 const Theatre = ({height, width}) => {
   const [videoPosition, setVideoPosition] = React.useState(-1)
   const videoRef = React.useRef()
   const videoWrapperRef = React.useRef()
   const curtainRef = React.useRef()
+  const headerRef = React.useRef()
+  const sectionHeight = React.useMemo(() => {
+    return headerRef.current?.clientHeight + videoRef.current?.offsetHeight
+  },[height])
+
+  const videoHeight = React.useMemo(() => {
+    return curtainRef.current?.clientHeight
+  },[height, videoRef])
+
 
   console.log(height)
-  // console.log(curtainRef.current?.clientHeight)
-  // console.log(videoRef.current?.offsetHeight)
-  // console.log(videoWrapperRef.current?.clientHeight)
+  console.log(curtainRef.current?.clientHeight, "curtainRef")
+  console.log(videoRef.current?.offsetHeight, "videoRef")
+  console.log(videoWrapperRef.current?.clientHeight, "videoWrapperRef")
+  console.log(videoHeight, "videoHeight")
+  console.log(sectionHeight, "sectionHeight")
+
+  console.log(videoRef)
 
   React.useEffect(() => {
     const playVideo =  setTimeout(()=>{
@@ -144,31 +149,32 @@ const Theatre = ({height, width}) => {
     
   }, []);
   return (
-    <Section height={height} width={width}>
-      <Header>
+    <Section height={sectionHeight} width={width}>
+      <Header ref={headerRef}>
         <TopCurtainContainer>
-          <TicketsContainer>
-            {[
-              {text: "Mint", link: ""},
-            ].map(({text, link}, i) => (
-              <Ticket text={text} link={link} key={i} />
-            ))}
-            </TicketsContainer>
-          <TopCurtain>
+            {/* <TicketsContainer>
+              {[
+                {text: "Mint", link: ""},
+              ].map(({text, link}, i) => (
+                <Ticket text={text} link={link} key={i} />
+              ))}
+            </TicketsContainer> */}
+    
             <Image src={topcurtain} layout="fill" />
-          </TopCurtain>
+         
         </TopCurtainContainer>
       </Header>
-      <CurtainContainer ref={curtainRef} height={videoRef.current?.offsetHeight} width={width}>
+      <CurtainContainer ref={curtainRef} height={videoHeight} width={width}>
         <Curtain left image={leftcurtain} layout="responsive"/>
         <Curtain image={rightcurtain} layout="responsive"/>
         {/* <VideoWrapper 
-          ref={videoWrapperRef}
+          // ref={videoWrapperRef}
           height={videoRef.current?.offsetHeight}
-          videoPosition={videoPosition}
+          // videoPosition={videoPosition}
         > */}
-          <video
-          style={{position: "absolute", top: 0, left: 0}}
+          <VideoPadder />
+          <Video
+       
           width={width}
           ref={videoRef}
           controls src={require('../../../public/movie.mp4')} />
