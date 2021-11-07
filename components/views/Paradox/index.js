@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components'
 import Image from 'next/image'
 import City from '../../../public/city2.jpg'
-import Speakeasy from '../../../public/Speakeasy.jpg'
+import Speakeasy from '../../../public/speakeasy.jpg'
 import Theatre from '../../../public/theatrescene.jpg'
 import livingRoom from '../../../public/livingroom.jpg'
 import PulsingButton from '../../PulsingButton'

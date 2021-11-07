@@ -4,11 +4,10 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import leftcurtain from '../../../public/leftcurtain.png'
 import rightcurtain from '../../../public/rightcurtain.png'
-import ticket from '../../../public/ticket.png'
 import topcurtain from '../../../public/toppanel.png'
 import ReactPlayer from 'react-player';
 import { IconButton, Box } from "@mui/material"
-// import video from '../../../public/movie.mp4'
+
 
 
 
@@ -60,40 +59,6 @@ const CurtainWrapper = styled(motion.div)`
   min-height: 800px !important;
   position: absolute;
   z-index: 1001;
-`
-
-const TicketsContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  
-`
-
-const TicketWrapper = styled.div`
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 150px;
-  height: 65px;
-`
-
-const TicketText = styled.p`
-  postion: relative;
-  z-index: 2;
-  font-weight: bold;
-`
-
-const TicketImageWrapper = styled.div`
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 0;
-
 `
 
 const VideoPadder = styled.div``
@@ -196,16 +161,6 @@ const Curtain = ({left, image}) => {
   )
 }
 
-const Ticket = ({text, link}) => {
-  return (
-    <TicketWrapper>
-      <TicketText type button onClick={link}>{text}</TicketText>
-      <TicketImageWrapper>
-        <Image src={ticket} layout="responsive" />
-      </TicketImageWrapper> 
-    </TicketWrapper>
-  )
-}
 
 
 export default Theatre

@@ -4,6 +4,7 @@ import Image from 'next/image'
 // import {Character} from './Character'
 import Character from '../../../public/character.png'
 import {Grid} from '@mui/material'
+import ticket from '../../../public/ticket.png'
 
 const Section = styled.section`
   position: relative;
@@ -42,9 +43,44 @@ const Title = styled.h3`
   color: #fff;
 `
 
+const TicketsContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  
+`
+
+const TicketWrapper = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 65px;
+`
+const TicketImageWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+
+`
+const TicketText = styled.p`
+  postion: relative;
+  z-index: 2;
+  color: #fff;
+  font-weight: bold;
+`
 const Characters = ({width, height}) => {
   return (
     <Section width={width} height={height}>
+        <TicketsContainer>
+          <Ticket text="Mint" link="" />
+        </TicketsContainer>
       <Header>
         <Title>Character preview coming soon!</Title>  
       </Header>
@@ -62,6 +98,18 @@ const CharacterCard = () => {
     <Card>
        <Image src={Character} layout="responsive"/>
     </Card>
+  )
+}
+
+
+const Ticket = ({text, link}) => {
+  return (
+    <TicketWrapper>
+      <TicketText type button onClick={() => {}}>{text}</TicketText>
+      <TicketImageWrapper>
+        <Image src={ticket} layout="responsive" />
+      </TicketImageWrapper> 
+    </TicketWrapper>
   )
 }
 
