@@ -4,6 +4,9 @@ import twitter from '../../../public/twitter.png'
 import instagram from '../../../public/instagram.png'
 import discord from '../../../public/discord.png'
 import youtube from '../../../public/youtube.png'
+import github from '../../../public/github.png'
+import solana from '../../../public/solana.png'
+import phantom from '../../../public/phantom.png'
 import whitepaper from '../../../public/whitepaper.png'
 import { IconButton } from '@mui/material';
 import Link from '@mui/material/Link';
@@ -23,13 +26,21 @@ const SocialContainer = styled.div`
 `
 
 const LinkContainer = styled.div`
-width: 100%;
-display: flex;
-justify-content: center;
-align-items: center;
-background-color: #000;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #000;
 `
 const LinkWrapper = styled(Link)`
+	padding: 1rem;
+	color: #fff;
+`
+
+const ImageWrapper = styled(Link)`
+	position: responsive;
+	height: 75px;
+	width: 75px;
 	padding: 1rem;
 	color: #fff;
 `
@@ -59,6 +70,14 @@ const Social = ({width}) => {
 						icon: youtube,
 						link: "https://www.youtube.com/c/OntheFlywithSly"
 					},
+					{
+						icon: github,
+						link: "https://github.com/Paradoxrealm"
+					},
+					{
+						icon: twitter,
+						link: "https://twitter.com/merkleseeds"
+					},
 				].map(({icon, link}, i) => (
 					<IconButton href={link} key={i}>
 						<Image src={icon} alt="social" />
@@ -66,12 +85,20 @@ const Social = ({width}) => {
 				))}
 			</SocialContainer>
 			<LinkContainer>
-				<LinkWrapper>
+				<LinkWrapper href="https://solanart.io/" rel="noopener" target="_blank">
 					Solana Art
 				</LinkWrapper>
-				<LinkWrapper>
+				<LinkWrapper href="https://digitaleyes.market/" rel="noopener" target="_blank">
 					Digital Eyes
 				</LinkWrapper>
+			</LinkContainer>
+			<LinkContainer>
+				<ImageWrapper>
+					<Image src={solana} alt="solana" layout="responsive"/>
+				</ImageWrapper>
+				<ImageWrapper>
+					<Image src={phantom} alt="phantom wallet" layout="responsive"/>
+				</ImageWrapper>
 			</LinkContainer>
 		</Section>
 	)

@@ -9,32 +9,30 @@ import Roadmap from '../components/views/Roadmap'
 import useWindowDimensions from '../hooks/useWindowDimension'
 import styled from 'styled-components'
 import Social from '../components/views/Social'
-
-
-
-const Main = styled.main`
-
-`
+import theme from '../theme'
+import { ThemeProvider } from '@mui/material'
 
 export default function Home() {
   const { height, width } = useWindowDimensions()
 
   return ( 
-    <div>
-      <Head>
-        <title>Paradox Realm</title>
-        <meta name="description" content="Paradox Realm next app" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Main>
-        <Theatre height={height} width={width}/>
-        {/* <Worlds height={height} width={width}/> */}
-        <Paradox height={height} width={width}/>
-        <Roadmap height={height} width={width}/>
-        <Characters height={height} width={width}/>
-        <Team height={height} width={width}/>
-        <Social height={height} width={width}/>
-      </Main>
-    </div>
+    <ThemeProvider theme={theme}>
+      <div>
+        <Head>
+          <title>Paradox Realm</title>
+          <meta name="description" content="Paradox Realm next app" />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+        <main>
+          <Theatre height={height} width={width}/>
+          {/* <Worlds height={height} width={width}/> */}
+          <Paradox height={height} width={width}/>
+          <Roadmap height={height} width={width}/>
+          <Characters height={height} width={width}/>
+          <Team height={height} width={width}/>
+          <Social height={height} width={width}/>
+        </main>
+      </div>
+    </ThemeProvider>
   )
 }

@@ -5,8 +5,8 @@ import Teampage from '../../../public/teampage.jpg'
 import { Typography } from '@mui/material'
 
 const Section = styled.section`
-height: ${props => `${props.height}px`};
-width: ${props => `${props.width}px`};
+  height: ${props => `${props.height + 200}px`};
+  width: ${props => `${props.width}px`};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,7 +16,7 @@ const ImageContainer = styled.div`
   width: 100%;
   height: 100%;
   position: relative;
-  height: ${props => `${props.height}px`};
+  height: ${props => `${props.height + 200}px`};
 `
 
 const TeamContainer = styled.div`
@@ -80,12 +80,12 @@ const partnersColabs = [
 
 const Team = ({height, width}) => {
   const teamRef = React.useRef()
-  console.log(teamRef.current?.clientHeight, "teamRef")
+  console.log(height, "teamRef")
 
 
   return (
     <Section height={height} width={width}>
-      <ImageContainer >
+      <ImageContainer height={height}>
         <Image src={Teampage} alt="team" layout="fill" priority/>
         <TeamContainer ref={teamRef} height={height}>
           <Title text="Team" />

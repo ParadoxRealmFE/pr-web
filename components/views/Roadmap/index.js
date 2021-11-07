@@ -24,9 +24,16 @@ const Title = styled.h3`
   color: #fff;
 `
 
-const TextContainer = styled.div`
-  display: flex;
-  flex-direction:
+const Text = styled(Typography)`
+  color: #fff;
+`
+
+const TextLabel = styled(StepLabel)`
+  color: #fff;
+`
+
+const StepTest = styled(Step)`
+  color: #fde182 !important;
 `
 
 const steps = [
@@ -106,16 +113,11 @@ export default function VerticalLinearStepper({width}) {
       </Header>
       <Stepper activeStep={2} nonLinear={true} orientation="vertical">
         {steps.map((step, index) => (
-          <Step active key={step.label} style={{color: "#000"}}>
-            <StepLabel
-              optional={
-                index === 2 ? (
-                  <Typography variant="caption">Last step</Typography>
-                ) : null
-              }
+          <StepTest active key={step.label} style={{color: "#fff"}}>
+            <TextLabel
             >
-              {step.label}
-            </StepLabel>
+              <Text>{step.label}</Text>
+            </TextLabel>
             <StepContent>
               {/* <TextContainer> */}
               {
@@ -123,16 +125,16 @@ export default function VerticalLinearStepper({width}) {
                   step.description.map((item, i) => {
                     console.log(item)
                     return(
-                    <Typography key={i}>{item}</Typography>
+                    <Text key={i}>{item}</Text>
                     )
                   })
                 ) : (
-                  <Typography>{step.description}</Typography>
+                  <Text>{step.description}</Text>
                 )
               }
               {/* </TextContainer> */}
             </StepContent>
-          </Step>
+          </StepTest>
         ))}
       </Stepper>
       </Container>
