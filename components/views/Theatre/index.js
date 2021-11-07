@@ -18,7 +18,6 @@ const Section = styled(Box)`
   width: ${props => `${props.width}px`};
   max-width: ${props => `${props.width}px`};
   height: auto;
-  min-height: 800px !important;
   overflow: hidden;
   background-color: #000;
 
@@ -170,13 +169,7 @@ const Theatre = ({height, width}) => {
       <CurtainContainer ref={curtainRef} height={videoHeight} width={width}>
         <Curtain left image={leftcurtain} layout="fill"/>
         <Curtain image={rightcurtain} layout="fill"/>
-        {/* <VideoWrapper 
-          // ref={videoWrapperRef}
-          height={videoRef.current?.offsetHeight}
-          // videoPosition={videoPosition}
-        > */}
-          {/* <VideoPadder /> */}'
-          
+      
           <Video
 
           width={width}
