@@ -64,7 +64,7 @@ const PulseContainer = styled.div`
 
 `
 
-const PulsingButton = ({left, top, size = "30px" , color, text = "Coming Soon."}) => {
+const PulsingButton = ({left, top, size = "30px" , color, text = "Coming Soon.", callBack}) => {
   const [open, setOpen] = React.useState(false)
 
   const pulseColor = React.useMemo(() => {
@@ -73,7 +73,7 @@ const PulsingButton = ({left, top, size = "30px" , color, text = "Coming Soon."}
   },[color])
 
   const handleOpen = () => {
-    console.log("fired")
+    callBack()
     setOpen(!open)
   }
 

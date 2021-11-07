@@ -43,7 +43,6 @@ const Title = styled.h3`
 `
 
 const Characters = ({width, height}) => {
-  console.log(width, height)
   return (
     <Section width={width} height={height}>
       <Header>
