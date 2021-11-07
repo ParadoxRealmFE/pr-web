@@ -13,6 +13,7 @@ const Section = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   padding: 2rem;
   padding-top: 80px;
 `
@@ -33,10 +34,21 @@ const Card = styled.div`
   position: relative;
 `
 
+const Header = styled.div`
+  color: #000;
+`
+
+const Title = styled.h3`
+  color: #fff;
+`
+
 const Characters = ({width, height}) => {
   console.log(width, height)
   return (
     <Section width={width} height={height}>
+      <Header>
+        <Title>Character preview coming soon!</Title>  
+      </Header>
       <CharacterContainer width={width} height={height}>
         {[0,1,2,3,4,5,6,7,8,9,10,11].map((item) => (
           <CharacterCard key={item}/>

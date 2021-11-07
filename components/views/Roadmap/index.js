@@ -1,98 +1,141 @@
-import React from 'react'
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import Stepper from '@mui/material/Stepper';
+import Step from '@mui/material/Step';
+import StepLabel from '@mui/material/StepLabel';
+import StepContent from '@mui/material/StepContent';
+import Typography from '@mui/material/Typography';
 import styled from 'styled-components'
-import Image from 'next/image'
-import man from '../../../public/man.png'
-import film from '../../../public/film.png'
-import roadmap from '../../../public/roadmap.jpg'
+import { Container } from '@mui/material';
 
 const Section = styled.section`
-  height: 100%;
-  min-height: ${props => `${props.height}px`};
-  padding: 2rem;
   width: ${props => `${props.width}px`};
   display: flex;
-  justify-content: center;
-`
-const FilmWrapper = styled.div`
-  padding-top: 45px;
-  position: relative;
-  width: 90%
+  flex-direction: column;
+  padding: 1rem;
+  background-color: #000;
 `
 
-const FilmStrip = styled.div`
-  postion: relative;
+const Header = styled.div`
+  color: #fff;
 `
 
-const CharWrapper = styled.div`
-  width: 100%;
-  height: 100%;
-  position: relative;
-
+const Title = styled.h3`
+  color: #fff;
 `
 
-const roadmapData = {
-  top: [
+const TextContainer = styled.div`
+  display: flex;
+  flex-direction:
+`
+
+const steps = [
     {
-      date: "October 31", 
-      value: "Discord Launch", 
-      top: 0, 
-      left: 0, 
-      deg: 0
+      label: "October 31", 
+      description: "Scene for website Development Finalized ", 
     },
     {
-      date: "November 1st", 
-      value: "Earn Drop Challenge", 
-      top: 0, 
-      left: 0, 
-      deg: 0
+      label: "November 3rd Day of the Dead", 
+      description: "Discord launch", 
     },
     {
-      date: "November 5th", 
-      value: "Website Launch", 
-      top: 0, 
-      left: 0, 
-      deg: 0
+      label: "November 7th", 
+      description: "Website Launch", 
     },
     {
-      date: "November 26th", 
-      value: "Mint", 
-      top: 0, 
-      left: 0, 
-      deg: 0
+      label: "November 26th BLACK FRIDAY USA", 
+      description: "Main launch of FAIR MINT with Solana mint partners ", 
     },
     {
-      date: "December 31st", 
-      value: "Collab. w/NULS Hack-a-thon", 
-      top: 0, 
-      left: 0, 
-      deg: 0
+      label: "December 31st New Years Eve", 
+      description: "Cross collaboration with Cobalt / NULS Hack-A-Thon", 
+    },
+    {
+      label: "January 1st  New Years Day", 
+      description: ["*Launch Party*", "Bordel: Speakeasy located in Chicago, IL"]
+    },
+     {
+       label: "February 14th St. Valentine's Day", 
+       description: ["*Crowd Vote Art Exhibit (visual and audio)*", "Mint Museum located in North Carolina", "https://mintmuseum.org/", "Logan Square located in Chicago, IL", 
+       "https://giggster.com/listing/large-logan-square-garage-space", "Convention Center located in Cincinnati, OH", "https://www.duke-energycenter.com/",] 
+      },
+    {
+      label: "March 17th St. Patrick's Day", 
+      description: "Build out begins of chosen real estate in the metaverse ", 
+    },
+    {
+      label: "April 1st April Fools Day", 
+      description: ["*Murder Mystery Dinner Party Event*",
+      "(Select NFT invite only)",
+       "The Murder Mystery Company ",
+      "525 West Arlington Place, Chicago, IL 60614",                      
+      "https://murdermysterydinnerchicago.com/?utm_source=GMB&utm_medium=organic"]
+    },
+    {
+      label: "April 20th ", 
+      description: "Virtual Event / Music streaming Event (local college radio)", 
+    },
+    {
+      label: "July 14th Bastille Day French", 
+      description:["Panic room / Event escalation: participants selected from NFT holders to compete in real life panic room hosted by Paradox Realm (coincides with the addition of the American Wild West world / new world within Paradox Realm)", "Panic Room NYC  (Wild West Escape Room)", "https://paniqescaperoom.com/nyc/en"], 
     },
   ]
-}
 
 
-const Roadmap = ({width, height}) => {
-  const image = React.useRef()
+export default function VerticalLinearStepper({width}) {
+  const [activeStep, setActiveStep] = React.useState(4);
+
+  const handleNext = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+  };
+
+  const handleBack = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  };
+
+  const handleReset = () => {
+    setActiveStep(0);
+  };
 
   return (
-    <Section width={width} height={image.current?.clientHeight || 1000}>
-      {/* <FilmWrapper>
-        <FilmStipComp />
-        <FilmStipComp />
-      </FilmWrapper> */}
-      <CharWrapper ref={image}>
-        <Image  src={roadmap} alt="character" layout="responsive"/>
-      </CharWrapper>
+    <Section width={width}>
+     
+      <Container>
+      <Header>
+        <Title>Roadmap</Title>  
+      </Header>
+      <Stepper activeStep={2} nonLinear={true} orientation="vertical">
+        {steps.map((step, index) => (
+          <Step active key={step.label} style={{color: "#000"}}>
+            <StepLabel
+              optional={
+                index === 2 ? (
+                  <Typography variant="caption">Last step</Typography>
+                ) : null
+              }
+            >
+              {step.label}
+            </StepLabel>
+            <StepContent>
+              {/* <TextContainer> */}
+              {
+                Array.isArray(step.description) ? (
+                  step.description.map((item, i) => {
+                    console.log(item)
+                    return(
+                    <Typography key={i}>{item}</Typography>
+                    )
+                  })
+                ) : (
+                  <Typography>{step.description}</Typography>
+                )
+              }
+              {/* </TextContainer> */}
+            </StepContent>
+          </Step>
+        ))}
+      </Stepper>
+      </Container>
     </Section>
-  )
+  );
 }
-
-const FilmStipComp = () => {
-  return (
-    <FilmStrip>
-      <Image src={film} alt="film strp"/>
-    </FilmStrip>
-  )
-}
-
-export default Roadmap

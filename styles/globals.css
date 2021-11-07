@@ -13,4 +13,31 @@ a {
 
 * {
   box-sizing: border-box;
+  /* background-color: #000; */
+}
+
+/* MUI Overides */
+
+.css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-completed {
+  color: #fde182;
+}
+
+.css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-active {
+  color: #fde182;
+}
+
+.MuiStepLabel-label.Mui-completed {
+  color: #fff;
+}
+
+.MuiStepLabel-label.Mui-active  {
+  color: #fff;
+}
+
+.css-ahj2mt-MuiTypography-root  {
+  color: #fff;
+}
+
+.css-qivjh0-MuiStepLabel-label {
+  color: #fff;
 }
