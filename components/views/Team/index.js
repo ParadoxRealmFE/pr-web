@@ -58,11 +58,11 @@ const TeamMemberText = styled.p`
 
 const teamData = [
   {member: "Sly", position: "Creative Director & Design"},
-  {member: "Trees", position: "Front-end Developer"},
-  {member: "Tyler Zimmerman", position: "AI Support"},
+  {member: "Robert White", position: "Front-end Developer"},
+  {member: "Tyler Zimmerman", position: "3d Game Dev and AI Support"},
   {member: "Julian Beltz", position: " AI Support"},
   {member: "Mr.One", position: "Scenic Artist"},
-  {member: "Ursula", position: "Character Artist"},
+  {member: "Ursula Sanzo", position: "Character Artist"},
   {member: "AudioChroma", position: "Musical Score"},
 ]
 
