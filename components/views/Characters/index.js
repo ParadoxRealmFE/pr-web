@@ -14,6 +14,7 @@ const Section = styled.section`
   justify-content: center;
   align-items: center;
   padding: 2rem;
+  padding-top: 80px;
 `
 
 const CharacterContainer = styled.div`

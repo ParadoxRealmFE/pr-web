@@ -12,15 +12,26 @@ const Section = styled.section`
   justify-content: center;
   align-items: center;
   position: relative;
+  height: auto;
+  min-height: 100% !important;
+  overflow: hidden;
   z-index: 1;
-  padding: 2rem;
+  padding: 8px;
   background: #000;
+  @media (min-width: 768px) {
+    padding: 2rem;
+  }
+
 `
 
 const ImageContainer = styled.div`
   width: 100%;
-  height: 100%;
+  min-height: 1000px;
   position: relative;
+  @media (max-width: 900px) {
+    min-height: 600px;
+  }
+
 `
 
 
@@ -46,7 +57,7 @@ const Paradox = ({width, height}) => {
         <PulsingButton left="27%" top="20%" size="30px" color="red"/>
         <PulsingButton left="80%" top="50%" size="30px" color="red"/>
         <PulsingButton left="15%" top="67.5%" size="30px" color="red"/>
-        <Image src={City} alt="city" layout="responsive" priority/>
+        <Image src={City} alt="city" layout="fill" priority/>
       </ImageContainer>
     </Section>
   )

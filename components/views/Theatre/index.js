@@ -17,6 +17,8 @@ const Section = styled(Box)`
   flex-direction: column;
   width: ${props => `${props.width}px`};
   max-width: ${props => `${props.width}px`};
+  height: auto;
+  min-height: 800px !important;
   overflow: hidden;
   background-color: #000;
 
@@ -24,8 +26,8 @@ const Section = styled(Box)`
 
 const Header = styled.header`
   width: 100%;
-  height: 100%;
-  min-height: 80px;
+  height: auto;
+  min-height: 100px;
   max-height: 140px;
   background-color: #000;
   position: relative;
@@ -33,7 +35,7 @@ const Header = styled.header`
 
 const TopCurtainContainer = styled.div`
   width: 100%;
-  height: 100%;
+  height: 120%;
   position: absolute;
   top: 0;
   left: 0;
@@ -51,12 +53,12 @@ const TopCurtain = styled(Box)`
 const CurtainContainer = styled.div`
   position: relative;
   display: flex;
-  overflow: hidden;
 `
 
 const CurtainWrapper = styled(motion.div)`
   width: 100%;
-  height: 100%;
+  height: auto;
+  min-height: 800px !important;
   position: absolute;
   z-index: 1001;
 `
@@ -100,6 +102,7 @@ const VideoPadder = styled.div``
 const Video = styled.video`
   position: relative;
   z-index: 1;
+  // height: 800px;
 `
 
 
@@ -165,16 +168,17 @@ const Theatre = ({height, width}) => {
         </TopCurtainContainer>
       </Header>
       <CurtainContainer ref={curtainRef} height={videoHeight} width={width}>
-        <Curtain left image={leftcurtain} layout="responsive"/>
-        <Curtain image={rightcurtain} layout="responsive"/>
+        <Curtain left image={leftcurtain} layout="fill"/>
+        <Curtain image={rightcurtain} layout="fill"/>
         {/* <VideoWrapper 
           // ref={videoWrapperRef}
           height={videoRef.current?.offsetHeight}
           // videoPosition={videoPosition}
         > */}
-          <VideoPadder />
+          {/* <VideoPadder /> */}'
+          
           <Video
-       
+
           width={width}
           ref={videoRef}
           controls src={require('../../../public/movie.mp4')} />
