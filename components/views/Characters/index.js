@@ -96,7 +96,7 @@ const Characters = ({width, height}) => {
 const CharacterCard = () => {
   return (
     <Card>
-       <Image src={Character} layout="responsive"/>
+       <Image src={Character} layout="responsive" alt="character cards" priority/>
     </Card>
   )
 }
@@ -107,7 +107,7 @@ const Ticket = ({text, link}) => {
     <TicketWrapper>
       <TicketText type button onClick={() => {}}>{text}</TicketText>
       <TicketImageWrapper>
-        <Image src={ticket} layout="responsive" />
+        <Image src={ticket} layout="responsive" alt="mint icon" priority/>
       </TicketImageWrapper> 
     </TicketWrapper>
   )

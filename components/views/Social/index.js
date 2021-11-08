@@ -87,7 +87,7 @@ const Social = ({ width }) => (
 				  },
       ].map(({ icon, link }, i) => (
         <IconButton href={link} key={i}>
-          <Image src={icon} alt="social" />
+          <Image src={icon} alt="social" priority/>
         </IconButton>
       ))}
     </SocialContainer>
@@ -101,10 +101,10 @@ const Social = ({ width }) => (
     </LinkContainer>
     <LinkContainer>
       <ImageWrapper>
-        <Image src={solana} alt="solana" layout="responsive" />
+        <Image src={solana} alt="solana" layout="responsive" priority/>
       </ImageWrapper>
 			<PhantomWrapper href="https://phantom.app/" rel="noopener" target="_blank">
-				<Image src={phantom} alt="phantom wallet"  />
+				<Image src={phantom} alt="phantom wallet"  priority/>
 			</PhantomWrapper>
     </LinkContainer>
   </Section>
