@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components'
-import Image from 'next/image'
-import Teampage from '../../../public/teampage.jpg'
+import Teampage from '../../../public/teampage.jpg?trace'
 import { Typography } from '@mui/material'
 
 const Section = styled.section`
@@ -27,7 +26,7 @@ const TeamContainer = styled.div`
   justify-content: center;
   height: 100%;
   width: 100%;
-
+  padding: 2rem;
 `
 
 const TitleWrapper = styled.div`
@@ -51,9 +50,10 @@ const TeamMemberWrapper = styled.div`
   color: #fff;
   padding: 0;
 `
-const TeamMemberText = styled.p`
-  padding: 2px;
-  margin: 0;
+const ImageWrapper = styled.img`
+  height: 100%;
+  width: 100%;
+  position: absolute
 `
 
 const teamData = [
@@ -86,7 +86,7 @@ const Team = ({height, width}) => {
   return (
     <Section height={height} width={width}>
       <ImageContainer height={height}>
-        <Image src={Teampage} alt="team" layout="fill" priority/>
+        <ImageWrapper src={Teampage.src} alt="team"/>
         <TeamContainer ref={teamRef} height={height}>
           <Title text="Team" />
           <TeamWrapper>

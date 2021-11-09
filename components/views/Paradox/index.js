@@ -1,15 +1,13 @@
 import React from 'react';
 import styled from 'styled-components'
-import Image from 'next/image'
-import City from '../../../public/city2.jpg'
-import Speakeasy from '../../../public/speakeasy.jpg'
-import Theatre from '../../../public/theatrescene.jpg'
-import livingRoom from '../../../public/livingroom.jpg'
-import PulsingButton from '../../PulsingButton'
+import City from '../../../public/city2.jpg?trace'
+import Speakeasy from '../../../public/speakeasy.jpg?trace'
+import Theatre from '../../../public/theatrescene.jpg?trace'
+import livingRoom from '../../../public/livingroom.jpg?trace'
+import PulsingButton from '../../PulsingButton?trace'
 import { motion, AnimatePresence } from "framer-motion";
-import { wrap } from "popmotion";
 import { IconButton } from '@mui/material';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack?trace';
 
 const Section = styled.section`
   height: 100%;
@@ -49,6 +47,15 @@ const Previous = styled(IconButton)`
   color: "#fff"
 `
 
+const ImageWrapper = styled.img`
+width: 100%;
+min-height: 1000px;
+position: relative;
+@media (max-width: 900px) {
+  min-height: 600px;
+}
+`
+
 const variants = {
   enter: (direction) => {
     return {
@@ -75,7 +82,7 @@ const variants = {
 const data =
   {
   city: {
-    image: City,
+    image: City.src,
     hotSpots: [
       {
         left: "45.5%",
@@ -117,7 +124,7 @@ const data =
     ]
   },
   speakeasy: {
-    image: Speakeasy,
+    image: Speakeasy.src,
     hotSpots: [
       {
         left: "45.5%",
@@ -128,7 +135,7 @@ const data =
     ]
   },
   theatre: {
-    image: Theatre,
+    image: Theatre.src,
     hotSpots: [
       {
         left: "45.5%",
@@ -139,7 +146,7 @@ const data =
     ]
   },
   livingRoom: {
-    image: livingRoom,
+    image: livingRoom.src,
     hotSpots: [
       {
         left: "45.5%",
@@ -150,9 +157,6 @@ const data =
     ]
   },
 }
-
-
-  
 
 const Paradox = ({width, height}) => {
   const image = React.useRef()
@@ -164,24 +168,14 @@ const Paradox = ({width, height}) => {
 }
 
 export const Transition = () => {
-  // const [[page, direction], setPage] = useState([0, 0]);
   const [page, setPage] = React.useState("city")
   const [direction, setDirection] = React.useState(0)
 
-  // We only have 3 images, but we paginate them absolutely (ie 1, 2, 3, 4, 5...) and
-  // then wrap that within 0-2 to find our image ID in the array below. By passing an
-  // absolute page index as the `motion` component's `key` prop, `AnimatePresence` will
-  // detect it as an entirely new image. So you can infinitely paginate as few as 1 images.
-  // const imageIndex = wrap(0, images.length, page);
-
-  // const paginate = (newDirection) => {
-  //   setPage([page + newDirection, newDirection]);
-  // };
 
   const handleSetNewPage = React.useCallback((newPage) => {
     if(!newPage) return
     setPage(newPage)
-  },[page])
+  },[])
 
   return (
     <>
@@ -199,7 +193,7 @@ export const Transition = () => {
             opacity: { duration: 0.2 }
           }}
         >
-          <Image src={data[page].image} layout="fill" priority/>
+          <ImageWrapper src={data[page].image} layout="fill" />
         </motion.div>
         {data[page]?.hotSpots.map((hotSpot, i) => (
           <PulsingButton 

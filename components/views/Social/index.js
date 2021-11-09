@@ -2,15 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import { IconButton } from '@mui/material';
 import Link from '@mui/material/Link';
-import Image from 'next/image';
-import twitter from '../../../public/twitter.png';
-import instagram from '../../../public/instagram.png';
-import discord from '../../../public/discord.png';
-import youtube from '../../../public/youtube.png';
-import github from '../../../public/github.png';
-import solana from '../../../public/solana.png';
-import phantom from '../../../public/phantom.png';
-import whitepaper from '../../../public/whitepaper.png';
+import twitter from '../../../public/twitter.png?trace';
+import instagram from '../../../public/instagram.png?trace';
+import discord from '../../../public/discord.png?trace';
+import youtube from '../../../public/youtube.png?trace';
+import github from '../../../public/github.png?trace';
+import solana from '../../../public/solana.png?trace';
+import phantom from '../../../public/phantom.png?trace';
+import whitepaper from '../../../public/whitepaper.png?trace';
 
 const Section = styled.section`
 	width: ${(props) => `${props.width}px`};
@@ -23,6 +22,8 @@ const SocialContainer = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	background-color: #000;
+	flex-wrap: wrap;
 `;
 
 const LinkContainer = styled.div`
@@ -53,41 +54,46 @@ const PhantomWrapper = styled(IconButton)`
 	color: #fff;
 `;
 
+const ImageContainer = styled.img`
+  height: 100%;
+  width: 100%
+`
+
 const Social = ({ width }) => (
   <Section width={width}>
     <SocialContainer>
       {[
 				  {
-				    icon: twitter,
+				    icon: twitter.src,
 				    link: 'https://twitter.com/paradoxrealms?s=21',
 				  },
 				  {
-				    icon: instagram,
+				    icon: instagram.src,
 				    link: 'https://www.instagram.com/paradoxrealm13/',
 				  },
 				  {
-				    icon: discord,
+				    icon: discord.src,
 				    link: 'https://discord.gg/egEdrkR6',
 				  },
 				  {
-				    icon: whitepaper,
+				    icon: whitepaper.src,
 				    link: 'https://drive.google.com/file/d/1q3GLA9pYZXpfs563fjDqunvpMSu0pv_7/view?usp=sharing',
 				  },
 				  {
-				    icon: youtube,
-				    link: 'https://www.youtube.com/c/OntheFlywithSly',
+				    icon: youtube.src,
+				    link: 'https://www.youtube.com/channel/UCPts6RFfU1ivHqpISeleebw',
 				  },
 				  {
-				    icon: github,
+				    icon: github.src,
 				    link: 'https://github.com/Paradoxrealm',
 				  },
 				  {
-				    icon: twitter,
+				    icon: twitter.src,
 				    link: 'https://twitter.com/merkleseeds',
 				  },
       ].map(({ icon, link }, i) => (
         <IconButton href={link} key={i}>
-          <Image src={icon} alt="social" priority/>
+          <ImageContainer src={icon} alt="social"/>
         </IconButton>
       ))}
     </SocialContainer>
@@ -101,10 +107,10 @@ const Social = ({ width }) => (
     </LinkContainer>
     <LinkContainer>
       <ImageWrapper>
-        <Image src={solana} alt="solana" layout="responsive" priority/>
+        <ImageContainer src={solana.src} alt="solana"/>
       </ImageWrapper>
 			<PhantomWrapper href="https://phantom.app/" rel="noopener" target="_blank">
-				<Image src={phantom} alt="phantom wallet"  priority/>
+				<ImageContainer src={phantom.src} alt="phantom wallet" />
 			</PhantomWrapper>
     </LinkContainer>
   </Section>

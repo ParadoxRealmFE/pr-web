@@ -1,8 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
-import Image from 'next/image'
-
-import Hand from '../../../public/hand.png'
+import Hand from '../../../public/hand.png?trace'
 import PulsingButton from '../../../components/PulsingButton'
 
 
@@ -22,12 +20,17 @@ const HandContainer = styled.div`
   padding: 4rem;
 `
 
+const ImageWrapper = styled.img`
+  height: 100%;
+  width: 100%
+`
+
 const Worlds = ({height, width}) => {
   return (
     <Section height={height} width={width}>
       <HandContainer>
       <PulsingButton top="115px" left="80%" size="50px" color="yellow"/>
-        <Image src={Hand} alt="game hand" layout="responsive"/>
+        <ImageWrapper src={Hand.src} alt="game hand"/>
       </HandContainer>
     </Section>
   )

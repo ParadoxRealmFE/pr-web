@@ -1,11 +1,10 @@
+/* eslint-disable @next/next/no-img-element */
 import React from "react"
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
-import Image from 'next/image'
-import leftcurtain from '../../../public/leftcurtain.png'
-import rightcurtain from '../../../public/rightcurtain.png'
-import topcurtain from '../../../public/toppanel.png'
-import ReactPlayer from 'react-player';
+import leftcurtain from '../../../public/leftcurtain.png?trace'
+import rightcurtain from '../../../public/rightcurtain.png?trace'
+import topcurtain from '../../../public/toppanel.png?trace'
 import { IconButton, Box } from "@mui/material"
 
 
@@ -69,6 +68,11 @@ const Video = styled.video`
   // height: 800px;
 `
 
+const ImageWrapper = styled.img`
+  height: 100%;
+  width: 100%
+`
+
 
 const Theatre = ({height, width}) => {
   const [videoPosition, setVideoPosition] = React.useState(-1)
@@ -127,13 +131,13 @@ const Theatre = ({height, width}) => {
               ))}
             </TicketsContainer> */}
     
-            <Image src={topcurtain} layout="fill" />
+            <ImageWrapper src={topcurtain.src} alt="top curtain" />
          
         </TopCurtainContainer>
       </Header>
       <CurtainContainer ref={curtainRef} height={videoHeight} width={width}>
-        <Curtain left image={leftcurtain} layout="fill"/>
-        <Curtain image={rightcurtain} layout="fill"/>
+        <Curtain left image={leftcurtain.src} />
+        <Curtain image={rightcurtain.src} />
       
           <Video
 
@@ -156,7 +160,7 @@ const Curtain = ({left, image}) => {
       animate={{ x: direction }}
       transition={{ type: "spring", stiffness: 100, delay: 2, default: { duration: 2 }, }} 
       >
-        <Image src={image}  layout="responsive"/>
+        <ImageWrapper src={image} alt="curtains"/>
     </CurtainWrapper>
   )
 }

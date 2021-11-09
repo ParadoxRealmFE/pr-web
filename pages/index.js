@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import Theatre from '../components/views/Theatre'
 import Worlds from '../components/views/Worlds'
 import Paradox from '../components/views/Paradox'
@@ -25,7 +24,6 @@ export default function Home() {
         </Head>
         <main>
           <Theatre height={height} width={width}/>
-          {/* <Worlds height={height} width={width}/> */}
           <Paradox height={height} width={width}/>
           <Roadmap height={height} width={width}/>
           <Characters height={height} width={width}/>

@@ -1,10 +1,7 @@
 import React from 'react';
 import styled from 'styled-components'
-import Image from 'next/image'
-// import {Character} from './Character'
-import Character from '../../../public/character.png'
-import {Grid} from '@mui/material'
-import ticket from '../../../public/ticket.png'
+import Character from '../../../public/character.png?trace'
+import ticket from '../../../public/ticket.png?trace'
 
 const Section = styled.section`
   position: relative;
@@ -75,6 +72,13 @@ const TicketText = styled.p`
   color: #fff;
   font-weight: bold;
 `
+
+const ImageWrapper = styled.img`
+  height: 100%;
+  width: 100%
+`
+
+
 const Characters = ({width, height}) => {
   return (
     <Section width={width} height={height}>
@@ -96,7 +100,7 @@ const Characters = ({width, height}) => {
 const CharacterCard = () => {
   return (
     <Card>
-       <Image src={Character} layout="responsive" alt="character cards" priority/>
+       <ImageWrapper src={Character.src} alt="character cards"/>
     </Card>
   )
 }
@@ -107,7 +111,7 @@ const Ticket = ({text, link}) => {
     <TicketWrapper>
       <TicketText type button onClick={() => {}}>{text}</TicketText>
       <TicketImageWrapper>
-        <Image src={ticket} layout="responsive" alt="mint icon" priority/>
+        <ImageWrapper src={ticket.src} alt="mint icon" />
       </TicketImageWrapper> 
     </TicketWrapper>
   )
